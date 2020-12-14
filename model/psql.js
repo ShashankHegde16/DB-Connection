@@ -44,15 +44,16 @@ module.exports = class pssql {
      */
 
     async execute(text, params = []) {
+        const client = await pool.connect();
+
         try {
-            const client = await pool.connect();
             let query = {
                 text: text
             }
-            if (values.length > 0)
+            if (params.length > 0)
                 query.values = params
             const response = await client.query(query);
-            return response;
+            return response.rows
         } catch (err) {
             console.error(err);
             throw err;

@@ -3,7 +3,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const pssql = require('./model/psql');
-const { PSQL } = require('./config/dbconfig');
 const app = express();
 const port = 3000;
 

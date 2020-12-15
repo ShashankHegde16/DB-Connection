@@ -3,16 +3,23 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const commandhandler = require('./helper/handleinput');
+const decryptor = require('./env/decrypt');
+const decryptinstance = new decryptor();
 const app = express();
 const port = 3000;
 
+const todecry = ["MYSQLPASSW", "MYSQLUSR", "MYSQLSCHEMA", "PSSQLPASSW", "PSSQLUSR", "PSSQLSCHEMA"];
 
+todecry.forEach((ele) => {
+    decryptinstance.decrypt(process.env[ele]);
+})
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
         extended: true,
     })
 )
+
 
 
 app.listen(port, () => {

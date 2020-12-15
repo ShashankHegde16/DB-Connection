@@ -14,7 +14,7 @@ module.exports = class pssql {
             if (!pool) {
                 psqlInstance = new pssql;
                 pool = new Pool(PSQL);
-                console.log('Connection has been established to Postgres');
+                console.log('Connection has been established to PSQL');
             }
         } catch (e) {
             console.log(e);
@@ -28,7 +28,7 @@ module.exports = class pssql {
      */
     async init() {
         try {
-            await new Pool(dbConfig);
+            await new Pool(PSQL);
             console.log('Postgres connection established...');
         }
         catch (err) {

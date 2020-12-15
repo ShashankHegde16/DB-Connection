@@ -11,7 +11,6 @@ class Encrypt {
         let cipher = crypto.createCipheriv(algorithm, tempKey, tempIv);
         let encrypted = cipher.update(str);
         encrypted = Buffer.concat([encrypted, cipher.final()]);
-        console.log()
         return encrypted.toString('hex');
     }
 }
